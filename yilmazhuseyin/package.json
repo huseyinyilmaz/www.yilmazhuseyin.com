@@ -1,0 +1,22 @@
+{
+  "name": "yilmazhuseyin",
+  "version": "1.0.0",
+  "description": "Source code for www.yilmazhuseyin.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huseyinyilmaz/www.yilmazhuseyin.com.git"
+  },
+  "author": "yilmazhuseyin@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huseyinyilmaz/www.yilmazhuseyin.com/issues"
+  },
+  "homepage": "https://github.com/huseyinyilmaz/www.yilmazhuseyin.com#readme",
+  "devDependencies": {
+    "webpack-bundle-tracker": "^0.2.0"
+  }
+}
