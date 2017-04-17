@@ -1,0 +1,6 @@
+-r requirements.txt
+Werkzeug
+django-debug-toolbar
+ipdb
+ipython
+django-extensions
