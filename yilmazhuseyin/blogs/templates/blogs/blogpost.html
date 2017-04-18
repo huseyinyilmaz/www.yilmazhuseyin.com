@@ -1,0 +1,28 @@
+<div class="blog-post">
+  <h2 class="blog-post-title">
+    <a href="{% url 'blogs-post' blog.slug object.slug %}" class="header">
+      {{ object.title }}
+    </a>
+  </h2>
+  <p class="blog-post-meta">{{ object.created|date:"j F Y" }}</p>
+  <p>{{ object.content_HTML|safe }}</p>
+</div><!-- /.blog-post -->
+
+
+<div class="well small">
+  <footer class="post-info">
+    <span class="label label-primary">Date</span>
+      {{ object.created|date:"j F Y" }}
+
+    <span class="label label-primary"><i class="glyphicon glyphicon-folder-open"></i> Categories: </span>
+    {% for c in object.categories.all %}
+      <a href="">{{ c.name }}</a>.
+    {% endfor %}
+
+    <span class="label label-primary"><i class="glyphicon glyphicon-tags"></i> Tags: </span>
+    {% for t in object.tags.all %}
+      <a href="">{{ t.name }}</a>,
+    {% endfor %}
+
+  </footer><!-- /.post-info -->
+</div>

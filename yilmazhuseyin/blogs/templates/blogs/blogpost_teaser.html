@@ -1,0 +1,9 @@
+<div class="blog-post">
+  <h2 class="blog-post-title">
+    <a href="{% url 'blogs-post' blog.slug blogpost.slug %}" class="header">
+      {{ blogpost.title }}
+    </a>
+  </h2>
+    <p class="blog-post-meta">{{ blogpost.created|date:"j F Y" }}</p>
+  <p>{{ blogpost.teaser_HTML|safe }}</p>
+</div><!-- /.blog-post -->

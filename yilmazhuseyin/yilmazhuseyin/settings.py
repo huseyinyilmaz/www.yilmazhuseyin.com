@@ -31,16 +31,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party
     'django_extensions',
-    'core',
+    'pipeline',
+    'debug_toolbar',
+    # project
     'blogs',
-    'webpack_loader',
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'yilmazhuseyin.urls'
@@ -120,19 +125,47 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
 
-################################
-# Webpack loader configuration #
-################################
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'CACHE': not DEBUG,
-        'BUNDLE_DIR_NAME': 'webpack_bundles/',  # must end with slash
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
-        'POLL_INTERVAL': 0.1,
-        'TIMEOUT': None,
-        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+##################################
+# DJANGO PIPELINES CONFIGURATION #
+##################################
+
+# original value was 'django.contrib.staticfiles.storage.StaticFilesStorage'
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    'STYLESHEETS': {
+        'base': {
+            'source_filenames': (
+                'core/node_modules/bootstrap/dist/css/bootstrap.css',
+                'core/node_modules/bootstrap/dist/css/bootstrap-theme.css',
+                'core/styles/base.css',
+            ),
+            'output_filename': 'css/base.css',
+        },
+    },
+    'JAVASCRIPT': {
+        'base': {
+            'source_filenames': (
+                'core/node_modules/jquery/dist/jquery.js',
+                'core/node_modules/bootstrap/dist/js/bootstrap.js',
+            ),
+            'output_filename': 'js/base.js',
+        }
     }
 }
+
+
+########################
+# DJANGO DEBUG TOOLBAR #
+########################
+
+INTERNAL_IPS = ['127.0.0.1']

@@ -95,3 +95,5 @@ ENV/
 
 # macosx
 .DS_Store
+
+node_modules
