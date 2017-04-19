@@ -7,8 +7,16 @@
   <p class="blog-post-meta">{{ object.created|date:"j F Y" }}</p>
   <p>{{ object.content_HTML|safe }}</p>
 </div><!-- /.blog-post -->
+<!-- Share -->
+<div class="well small">
+  <footer class="post-info">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="yilmaz_huseyin">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <g:plusone></g:plusone>
+  </footer>
+</div>
 
-
+<!-- Blog info -->
 <div class="well small">
   <footer class="post-info">
     <span class="label label-primary">Date</span>
@@ -25,4 +33,5 @@
     {% endfor %}
 
   </footer><!-- /.post-info -->
+
 </div>

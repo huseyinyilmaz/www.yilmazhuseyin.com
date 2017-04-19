@@ -34,7 +34,7 @@ class Blog(TimeStampedModel):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('blog_index', kwargs={'blog_slug': self.slug})
+        return reverse('blogs-list', kwargs={'slug': self.slug})
 
     def get_date_list(self):
         return map(_Month, BlogPost.objects.filter(blog=self).get_date_list())
@@ -89,8 +89,8 @@ class BlogPost(TimeStampedModel):
         ordering = ('-created',)
 
     def get_absolute_url(self):
-        return reverse('blog_post', kwargs={'blog_slug': self.blog.slug,
-                                            'post_slug': self.slug})
+        return reverse('blogs-post', kwargs={'slug': self.blog.slug,
+                                             'post_slug': self.slug})
 
     def __str__(self):
         return self.title

@@ -18,18 +18,17 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% stylesheet 'base' %}
+      {% block extra_head %}{% endblock extra_head %}
   </head>
 
   <body>
-
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="#">Home</a>
-          <a class="blog-nav-item" href="#">New features</a>
-          <a class="blog-nav-item" href="#">Press</a>
-          <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
+          <a class="blog-nav-item {%if page == "index"%} active{%endif%}" href="/">Home</a>
+          {% for b in blogs %}
+            <a class="blog-nav-item{%if b == blog%} active{%endif%}" href="{% url 'blogs-list' b.slug %}">{{b.name}}</a>
+          {% endfor %}
         </nav>
       </div>
     </div>
@@ -39,12 +38,11 @@
     </div><!-- /.container -->
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
       <p>
         <a href="#">Back to top</a>
       </p>
     </footer>
-
     {% javascript 'base' %}
+    {% block extra_scripts %}{% endblock extra_scripts %}
   </body>
 </html>

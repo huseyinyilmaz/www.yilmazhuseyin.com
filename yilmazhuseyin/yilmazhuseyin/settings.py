@@ -148,6 +148,7 @@ PIPELINE = {
                 'core/node_modules/bootstrap/dist/css/bootstrap.css',
                 'core/node_modules/bootstrap/dist/css/bootstrap-theme.css',
                 'core/styles/base.css',
+                'core/node_modules/code-prettify/src/prettify.css',
             ),
             'output_filename': 'css/base.css',
         },
@@ -157,8 +158,19 @@ PIPELINE = {
             'source_filenames': (
                 'core/node_modules/jquery/dist/jquery.js',
                 'core/node_modules/bootstrap/dist/js/bootstrap.js',
+                'core/node_modules/lodash/lodash.js',
+                'core/node_modules/code-prettify/src/prettify.js',
+                'core/scripts/main.js',
             ),
             'output_filename': 'js/base.js',
+        },
+        'chat': {
+            'source_filenames': (
+                'core/publicator-js-client/lib/publicator-client.js',
+                'core/publicator-js-client/contrib/chat-client/chat-client.js',
+                'core/scripts/chat.js',
+            ),
+            'output_filename': 'js/chat.js',
         }
     }
 }
