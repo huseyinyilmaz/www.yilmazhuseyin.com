@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from os.path import expanduser
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's#t#+_g=ytt4*pt@-r(jbid4y1mu58p4r!j3_wp=-7i)jx#w0x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'localhost']
 
 
 # Application definition
@@ -181,3 +183,66 @@ PIPELINE = {
 ########################
 
 INTERNAL_IPS = ['127.0.0.1']
+
+
+#####################
+# LOG CONFIGURATION #
+#####################
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': ('%(levelname)s %(name)s %(asctime)s %(module)s '
+                       '%(process)d %(thread)d %(message)s')
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file': {
+            'level': 'DEBUG',
+            # 'class': 'logging.FileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'filename': expanduser('~/logs/yilmazhuseyin.log'),
+        },
+
+
+    },
+    'root': {
+        'handlers': ['console', 'file'],
+        'level': 'DEBUG',
+        'propagate': False,
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'file'],
+            # 'level': 'DEBUG',  # logs orm queries
+            'level': 'INFO',
+            'propagate': False,
+        },
+        # 'django.db': {
+        #     'handlers': ['console', 'file'],
+        #     'level': 'INFO',
+        #     'propagate': False,
+        # },
+
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console', 'file'],
+            'propagate': False,
+        },
+    }
+}
