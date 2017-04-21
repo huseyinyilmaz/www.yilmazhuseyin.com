@@ -2,3 +2,4 @@ django-model-utils
 Django==1.11
 markdown2
 django-pipeline
+uwsgi
