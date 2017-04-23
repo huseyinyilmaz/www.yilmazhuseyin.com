@@ -216,7 +216,7 @@ LOGGING = {
             # 'class': 'logging.FileHandler',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'simple',
-            'filename': expanduser('/var/log/yilmazhuseyin.log'),
+            'filename': expanduser('/var/log/blog_application.log'),
         },
 
 
