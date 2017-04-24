@@ -146,11 +146,11 @@ STATICFILES_FINDERS = (
 )
 
 PIPELINE = {
-    'PIPELINE_ENABLED': False,
-
-    'JS_COMPRESSOR': 'pipeline.compressors.closure.ClosureCompressor',
-    'CSS_COMPRESSOR': 'pipeline.compressors.cssmin.CSSMinCompressor',
-
+    # 'PIPELINE_ENABLED': False,
+    # 'JS_COMPRESSOR': 'pipeline.compressors.closure.ClosureCompressor',
+    # 'CSS_COMPRESSOR': 'pipeline.compressors.cssmin.CSSMinCompressor',
+    'CSS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
+    'JS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
     'STYLESHEETS': {
         'base': {
             'source_filenames': (
