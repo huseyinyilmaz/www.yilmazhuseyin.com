@@ -159,7 +159,8 @@ PIPELINE = {
     'JAVASCRIPT': {
         'base': {
             'source_filenames': (
-                'core/node_modules/jquery/dist/jquery.js',
+                # because of an yuglify bug we want to use jquery.min.js here.
+                'core/node_modules/jquery/dist/jquery.min.js',
                 'core/node_modules/bootstrap/dist/js/bootstrap.js',
                 'core/node_modules/lodash/lodash.js',
                 'core/node_modules/code-prettify/src/prettify.js',
