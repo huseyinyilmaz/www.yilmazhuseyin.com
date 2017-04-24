@@ -3,7 +3,7 @@
     // window.WebSocket = undefined;
     window.enable_logging = true;
 
-    function get_random_string(){
+    function get_random_string() {
         return Math.random().toString(36).substring(7);
     }
 
@@ -104,26 +104,31 @@
                     this.transport.send(obj);
                 },
 
-                subscribe: function(channel_code, handler_type){
+                subscribe: function(channel_code, handler_type) {
                     this.send_message({
                         type: 'subscribe',
-                        channel_code: channel_code});},
+                        channel_code: channel_code});
+                },
                     
-                unsubscribe: function(channel_code){
+                unsubscribe: function(channel_code) {
                     this.send_message({
                         type: 'unsubscribe',
-                        channel_code: channel_code});},
-                get_subscribtions: function(){
+                        channel_code: channel_code});
+                },
+                get_subscribtions: function() {
                     this.send_message({
                         type: 'get_subscribtions',
-                        data: null});},
+                        data: null});
+                },
 
-                publish: function(channel_code, message, meta){
+                publish: function(channel_code, message, meta) {
                     this.send_message({
-                        type: 'publish',
-                        channel_code: channel_code,
-                        data: message,
-                        meta});},
+                      type: 'publish',
+                      channel_code: channel_code,
+                      data: message,
+                      meta: meta
+                    });
+                },
 
                 handlers: {
                     onopen_handler_list: [],
