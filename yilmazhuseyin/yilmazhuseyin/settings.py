@@ -24,8 +24,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's#t#+_g=ytt4*pt@-r(jbid4y1mu58p4r!j3_wp=-7i)jx#w0x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-# DEBUG = True
+# DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
@@ -146,9 +146,6 @@ STATICFILES_FINDERS = (
 )
 
 PIPELINE = {
-    # 'PIPELINE_ENABLED': False,
-    # 'JS_COMPRESSOR': 'pipeline.compressors.closure.ClosureCompressor',
-    # 'CSS_COMPRESSOR': 'pipeline.compressors.cssmin.CSSMinCompressor',
     'CSS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
     'JS_COMPRESSOR': 'pipeline.compressors.NoopCompressor',
     'STYLESHEETS': {
@@ -223,10 +220,9 @@ LOGGING = {
             # 'class': 'logging.FileHandler',
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'simple',
-            'filename': expanduser('/var/log/blog_application.log'),
-            # 'filename': expanduser('~/blog_application.log'),
+            # 'filename': expanduser('/var/log/blog_application.log'),
+            'filename': expanduser('~/blog_application.log'),
         },
-
 
     },
     'root': {
