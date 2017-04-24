@@ -146,7 +146,7 @@ STATICFILES_FINDERS = (
 )
 
 PIPELINE = {
-    # 'PIPELINE_ENABLED': False,
+    'PIPELINE_ENABLED': False,
 
     'JS_COMPRESSOR': 'pipeline.compressors.closure.ClosureCompressor',
     'STYLESHEETS': {
