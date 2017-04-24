@@ -145,6 +145,7 @@ STATICFILES_FINDERS = (
 )
 
 PIPELINE = {
+    'PIPELINE_ENABLED': False,
     'STYLESHEETS': {
         'base': {
             'source_filenames': (
@@ -178,7 +179,6 @@ PIPELINE = {
         }
     }
 }
-
 
 ########################
 # DJANGO DEBUG TOOLBAR #
