@@ -1,5 +1,6 @@
 django-model-utils
 Django==1.11
+django-redis==4.7.0
 markdown2
 django-pipeline
 uwsgi

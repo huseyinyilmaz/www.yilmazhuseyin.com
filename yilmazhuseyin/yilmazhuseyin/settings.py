@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
                  'localhost',
+                 'www.yilmazhuseyin.com',
+                 'devwww.yilmazhuseyin.com',
                  '104.131.157.212']
 
 
